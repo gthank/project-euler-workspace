@@ -32,15 +32,23 @@ class memoized(object):
 def fib(term):
     """Calculate the nth Fibonacci number."""
     if (1 >= term):
-        return 1
+        return term
 
     return fib(term - 2) + fib(term - 1) 
+
+def find_highest_necessary_num(max):
+    """Find the highest n such that fib(n) < max."""
+    n = 0
+    while(fib(n) < max):
+        n += 1
+
+    return n
 
 def problem_two():
     """Calculate the sum of the even Fibonacci numbers less than 4,000,000."""
     # I precalculated the index of the largest Fibonacci number less than
     # 4,000,000 and it was 32.
-    fibs = [fib(n) for n in range(33)]
+    fibs = [fib(n) for n in range(find_highest_necessary_num(4000000))]
     return sum([cur_fib for cur_fib in fibs if not cur_fib % 2])
 
 if (__name__ == "__main__"):
