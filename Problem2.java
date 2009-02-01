@@ -16,7 +16,7 @@ public final class Problem2 {
      */
     private static final int fib(final int term) {
         if (1 >= term) {
-            return 1;
+            return term;
         }
         return fib(term - 2) + fib(term - 1);
     }
