@@ -23,5 +23,5 @@ def find_highest_prime_factor(to_factor):
             return prime
 
 if (__name__ == "__main__"):
-    print e_sieve(100)
+    print find_highest_prime_factor(600851475143)
 
