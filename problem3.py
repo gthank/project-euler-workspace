@@ -15,7 +15,6 @@ def e_sieve(upper_bound):
 
 def find_highest_prime_factor(to_factor):
     """Find the highest prime factor of to_factor."""
-    # TODO primality check on to_factor before we calculate the primes
     highest_prime = None
     primes = e_sieve(int(math.sqrt(to_factor)))
     for prime in primes:
@@ -30,6 +29,6 @@ def find_highest_prime_factor(to_factor):
 
     return to_factor
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     print find_highest_prime_factor(600851475143)
 
