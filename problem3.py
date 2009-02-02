@@ -30,15 +30,20 @@ def find_highest_prime_factor(to_factor):
     return to_factor
 
 def _factorize(to_factor):
+    """Use trial division to factorize to_factor and return all the resulting \
+    factors."""
     factors = []
     divisor = 2
     while (divisor < to_factor):
         if not to_factor % divisor:
             to_factor /= divisor
             factors.append(divisor)
+            # Note we don't bump the divisor here; if we did, we'd have
+            # non-prime factors.
         elif divisor == 2:
             divisor += 1
         else:
+            # Trivial optimization: skip even numbers that aren't 2.
             divisor += 2
     if not to_factor % divisor:
         factors.append(to_factor)
