@@ -29,6 +29,21 @@ def find_highest_prime_factor(to_factor):
 
     return to_factor
 
+def _factorize(to_factor):
+    factors = []
+    divisor = 2
+    while (divisor < to_factor):
+        if not to_factor % divisor:
+            to_factor /= divisor
+            factors.append(divisor)
+        elif divisor == 2:
+            divisor += 1
+        else:
+            divisor += 2
+    if not to_factor % divisor:
+        factors.append(to_factor)
+    return factors
+
 if __name__ == "__main__":
-    print find_highest_prime_factor(600851475143)
+    print max(_factorize(600851475143))
 
