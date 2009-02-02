@@ -5,7 +5,7 @@ import math
 def e_sieve(upper_bound):
     """Uses the Sieve of Eratosthenes to get a list of the primes up to max."""
     primes = []
-    candidates = range(2, int(math.sqrt(upper_bound)))
+    candidates = range(2, upper_bound)
     while candidates:
         head = candidates[0]
         primes.append(head)
@@ -16,7 +16,7 @@ def e_sieve(upper_bound):
 def find_highest_prime_factor(to_factor):
     """Find the highest prime factor of to_factor."""
     # TODO primality check on to_factor before we calculate the primes
-    descending_primes = e_sieve(to_factor)
+    descending_primes = e_sieve(int(math.sqrt(to_factor)))
     for prime in descending_primes:
         if not to_factor % prime:
             return to_factor / prime
