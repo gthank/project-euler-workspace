@@ -16,8 +16,8 @@ def e_sieve(upper_bound):
 def find_highest_prime_factor(to_factor):
     """Find the highest prime factor of to_factor."""
     # TODO primality check on to_factor before we calculate the primes
-    descending_primes = e_sieve(int(math.sqrt(to_factor)))
-    for prime in descending_primes:
+    primes = e_sieve(int(math.sqrt(to_factor)))
+    for prime in primes:
         if not to_factor % prime:
             return to_factor / prime
 
