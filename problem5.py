@@ -48,4 +48,4 @@ def lcm(numbers):
 if __name__ == '__main__':
     # Basic idea: factor the numbers; reduce to a tuple for each atom so [2, 2, 3] -> [(2,2), (3,1)]
     # Multiply the unique factors together using the highest degree
-    print lcm([1,2,3,4,5,6,7,8,9,10])
+    print lcm(range(1,20))
