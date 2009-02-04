@@ -25,10 +25,10 @@ def lcm(numbers):
     """Finds the Least Common Multiple of numbers."""
     highest_degree_factors = {}
     for number in numbers:
-        # Translate the raw list of factors into a dictionary of degrees keyed
-        # on the factor.
         degrees_by_factor = {}
         for factor in factorize(number):
+            # Translate the raw list of factors into a dictionary of degrees
+            # keyed on the factor.
             current_degree = degrees_by_factor.setdefault(factor, 0)
             if not current_degree:
                 degrees_by_factor[factor] = 1 + current_degree
@@ -40,9 +40,13 @@ def lcm(numbers):
             if highest_degree_factors[k] < v:
                highest_degree_factors[k] = v 
 
-    return -255
+    running_product = 1
+    for factor, degree in highest_degree_factors.iteritems():
+        running_product *= factor ** degree
+
+    return running_product
 
 if __name__ == '__main__':
     # Basic idea: factor the numbers; reduce to a tuple for each atom so [2, 2, 3] -> [(2,2), (3,1)]
     # Multiply the unique factors together using the highest degree
-    print "Work in progress"
+    print lcm([1,2,3,4,5,6,7,8,9,10])
