@@ -30,8 +30,7 @@ def lcm(numbers):
             # Translate the raw list of factors into a dictionary of degrees
             # keyed on the factor.
             current_degree = degrees_by_factor.setdefault(factor, 0)
-            if not current_degree:
-                degrees_by_factor[factor] = 1 + current_degree
+            degrees_by_factor[factor] = 1 + current_degree
 
         # Update the top-level dict so it really is tracking the highest
         # degrees.
