@@ -23,8 +23,22 @@ def factorize(to_factor):
 
 def lcm(numbers):
     """Finds the Least Common Multiple of numbers."""
+    highestDegreeFactors = {}
     for number in numbers:
-        factors = factorize(numbers)
+        # Translate the raw list of factors into a dictionary of degrees keyed
+        # on the factor.
+        degreesByFactor = {}
+        for factor in factorize(number):
+            currentDegree = degreesByFactor.setdefault(factor, 0)
+            if not currentDegree:
+                degreesByFactor[factor] = 1 + currentDegree
+
+        # Update the top-level dict so it really is tracking the highest
+        # degrees.
+        for k, v in degreesByFactor.iteritems():
+            highestDegreeFactors.setdefault(k, v)
+            if highestDegreeFactors[k] < v:
+               highestDegreeFactors[k] = v 
 
     return -255
 
