@@ -46,6 +46,4 @@ def lcm(numbers):
     return running_product
 
 if __name__ == '__main__':
-    # Basic idea: factor the numbers; reduce to a tuple for each atom so [2, 2, 3] -> [(2,2), (3,1)]
-    # Multiply the unique factors together using the highest degree
     print lcm(range(1,20))
