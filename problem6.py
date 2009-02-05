@@ -2,8 +2,10 @@
 
 def sum_of_squares(upper_bound):
     """Sums the squares of all the natural numbers from 1 to \
-    upper_bound."""
-    return sum(n ** 2 for n in range(1, upper_bound))
+    upper_bound (inclusive)."""
+    result = sum(n ** 2 for n in range(1, upper_bound + 1))
+    print "sum_of_squares({0}) -> {1}".format(upper_bound, result) 
+    return result
 
 def square_of_sums(upper_bound):
     """Sums all the numbers from 1 to upper_bound."""
