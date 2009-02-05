@@ -9,7 +9,7 @@ def sum_of_squares(upper_bound):
 
 def square_of_sums(upper_bound):
     """Sums all the numbers from 1 to upper_bound."""
-    # Use Euler's insight about n/2 * (n + 1).
+    # Use Gauss' insight about n/2 * (n + 1).
     return (upper_bound * (upper_bound + 1) / 2) ** 2
 
 def problem_6(n):
