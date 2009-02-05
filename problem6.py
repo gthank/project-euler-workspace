@@ -20,4 +20,4 @@ def problem_6(n):
     return square_of_sums(n) - sum_of_squares(n)
 
 if __name__ == '__main__':
-    print problem_6(10)
+    print problem_6(100)
