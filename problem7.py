@@ -13,7 +13,7 @@ def e_sieve(upper_bound):
         primes.append(head)
         # Avoids list comprehension so we can avoid new memory allocations.
         for candidate in candidates:
-            if not candidate % next_prime:
+            if not candidate % head:
                 candidates.remove(candidate)
 
     return primes
