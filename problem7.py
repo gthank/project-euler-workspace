@@ -40,9 +40,7 @@ def problem_7(n):
     upper_bound = int(n * math.log(n) + n * math.log(math.log(n)))
 
     primes = e_sieve(upper_bound)
-
-    return "Trying to find the {0} prime. We think it's less than {1}; in fact, we think it's {2}."\
-           .format(n, upper_bound, max(primes))
+    return primes[n - 1]
 
 if __name__ == '__main__':
     print problem_7(10001)
