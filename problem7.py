@@ -18,7 +18,7 @@ def is_prime(candidate, known_primes):
     return True
 
 def primes_generator():
-    """A generator for all the primes that fit in xrange."""
+    """A generator for all the primes <= sys.maxint."""
     candidates = xrange(2, sys.maxint)
     primes = []
     for n in candidates:
