@@ -11,10 +11,7 @@ def e_sieve(upper_bound):
     while candidates:
         head = candidates[0]
         primes.append(head)
-        # Avoids list comprehension so we can avoid new memory allocations.
-        for candidate in candidates:
-            if not candidate % head:
-                candidates.remove(candidate)
+        candidates = [n for n in candidates[1:] if n % head]
 
     return primes
 
