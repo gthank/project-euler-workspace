@@ -20,13 +20,11 @@ def primes_generator(upper_bound):
     """Uses the Sieve of Eratosthenes behind the scenes to build a \
     generator for prime numbers."""
     candidates = range(2, upper_bound)
-    while candidates:
+    while len(candidates) > 1:
         next_prime = candidates.pop(0)
-        # Avoids list comprehension so we can avoid new memory allocations.
-        for candidate in candidates:
-            if not candidate % next_prime:
-                candidates.remove(candidate)
+        candidates = [n for n in candidates if n % next_prime]
         yield next_prime
+    yield candidates.pop()
 
 def problem_7(n):
     """Finds the nth prime number.
