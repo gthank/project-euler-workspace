@@ -26,7 +26,7 @@ def problem_7(n):
     if n < 6:
         return FIRST_SIX_PRIMES[n]
 
-    upper_bound = n * math.log(n) + n * math.log(math.log(n))
+    upper_bound = int(n * math.log(n) + n * math.log(math.log(n)))
 
     primes = e_sieve(upper_bound)
 
