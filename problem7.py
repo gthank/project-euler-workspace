@@ -15,6 +15,19 @@ def e_sieve(upper_bound):
 
     return primes
 
+# I know it's currently unused, but I wanted to write a generator.
+def primes_generator(upper_bound):
+    """Uses the Sieve of Eratosthenes behind the scenes to build a \
+    generator for prime numbers."""
+    candidates = range(2, upper_bound)
+    while candidates:
+        next_prime = candidates.pop(0)
+        # Avoids list comprehension so we can avoid new memory allocations.
+        for candidate in candidates:
+            if not candidate % next_prime:
+                candidates.remove(candidate)
+        yield next_prime
+
 def problem_7(n):
     """Finds the nth prime number.
 
