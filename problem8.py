@@ -1,5 +1,7 @@
 """Solves Problem 8 from Project Euler."""
 
+import operator
+
 def problem_8(num_in_question):
     """Finds and returns the greatest product of 5 consecutive digits \
     of num_in_question."""
@@ -9,9 +11,7 @@ def problem_8(num_in_question):
     last_possible_start = len(to_process) - 5
     while (offset < last_possible_start):
         digits = [int(digit) for digit in to_process[offset:offset + 5]]
-        product = 1
-        for n in digits:
-            product *= n
+        product = reduce(operator.mul, digits)
 
         if product > highest_product:
             highest_product = product
