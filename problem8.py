@@ -8,8 +8,9 @@ def problem_8(num_in_question):
     highest_product = 0
     while (offset < len(to_process) - 5):
         product = 1
-        for n in to_process[offset:offset + 5]:
-            product *= int(n)
+        digits = [int(digit) for digit in to_process[offset:offset + 5]]
+        for n in digits:
+            product *= n
 
         if product > highest_product:
             highest_product = product
