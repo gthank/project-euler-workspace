@@ -6,9 +6,10 @@ def problem_8(num_in_question):
     to_process = str(num_in_question)
     offset = 0
     highest_product = 0
-    while (offset < len(to_process) - 5):
-        product = 1
+    last_possible_start = len(to_process) - 5
+    while (offset < last_possible_start):
         digits = [int(digit) for digit in to_process[offset:offset + 5]]
+        product = 1
         for n in digits:
             product *= n
 
