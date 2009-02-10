@@ -11,7 +11,7 @@ def problem_8(num_in_question):
     """
     SEQUENCE_LENGTH = 5
     sequences = [num_in_question[offset:offset + SEQUENCE_LENGTH] \
-        for offset in range(len(num_in_question) - 5)]
+        for offset in range(len(num_in_question) - SEQUENCE_LENGTH)]
     nums = []
     for sequence in sequences:
         nums.append([int(num) for num in sequence])
