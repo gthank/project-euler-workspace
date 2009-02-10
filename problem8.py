@@ -4,21 +4,18 @@ import operator
 
 def problem_8(num_in_question):
     """Finds and returns the greatest product of 5 consecutive digits \
-    of num_in_question."""
-    to_process = str(num_in_question)
-    offset = 0
-    highest_product = 0
-    last_possible_start = len(to_process) - 5
-    while (offset < last_possible_start):
-        digits = [int(digit) for digit in to_process[offset:offset + 5]]
-        product = reduce(operator.mul, digits)
+    of num_in_question.
 
-        if product > highest_product:
-            highest_product = product
+    This function expects num_in_question to be a string so we can
+    slice it into 5-digit sequences.
+    """
+    SEQUENCE_LENGTH = 5
+    sequences = [num_in_question[offset:offset + SEQUENCE_LENGTH] for offset in range(len(num_in_question) - 5)]
+    nums = []
+    for sequence in sequences:
+        nums.append([int(num) for num in sequence])
 
-        offset += 1
-
-    return highest_product
+    return max([reduce(operator.mul, num_list) for num_list in nums])
 
 if __name__ == '__main__':
     print problem_8("73167176531330624919225119674426574742355349194934\
