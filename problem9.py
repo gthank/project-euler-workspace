@@ -14,7 +14,7 @@ def triples(upper_bound):
 # Only uncomment if the triples we get from the original Euclid's are insufficient.
 # for k in xrange(1, upper_bound):
 #     yield k * (m ** 2 - n ** 2), k * (2 * m * n), k * (m ** 2 + n ** 2)
-                
+
 def problem_9():
     """Finds the product of the Pythagorean Triple where a + b + c = 1000."""
     for triple in triples(1000):
