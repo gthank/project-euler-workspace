@@ -26,8 +26,8 @@ def primes_generator(upper_bound):
             yield n
 
 def problem_10():
-    """Sums the primes less than 2 million."""
-    sum(primes_generator(2000000))
+    """Sum the primes less than 2 million."""
+    return sum(primes_generator(2000000))
 
 if __name__ == '__main__':
     print problem_10()
