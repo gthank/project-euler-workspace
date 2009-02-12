@@ -1,6 +1,5 @@
 """Solves Problem 10 for Project Euler."""
 import math
-import sys
 
 def is_prime(candidate, known_primes):
     """Determines whether candidate is prime by trial division using \
