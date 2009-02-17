@@ -60,7 +60,7 @@ def _build_left(row_index, col_index):
 def _build_right(row_index, col_index):
     """Build the sequence going straight right from row_index."""
     if col_index + OFFSET >= len(GRID[row_index]):
-        return 0,
+        return INVALID_COORDS_TUPLE
 
     return (GRID[row_index][col_index],
             GRID[row_index][col_index + 1],
