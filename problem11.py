@@ -1,4 +1,8 @@
 """Solves Problem 11 from Project Euler."""
+
+import operator
+
+OFFSET = 3
 GRID = [
     [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
     [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -22,9 +26,38 @@ GRID = [
     [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ]
 
+def _build_up(row_index, col_index):
+    """Build the sequence going straight up from row_index."""
+    if row_index < OFFSET:
+        return 0,
+
+    return (GRID[row_index][col_index],
+            GRID[row_index - 1][col_index],
+            GRID[row_index - 2][col_index],
+            GRID[row_index - 3][col_index])
+
+
+def _build_all_possible_sequences():
+    """Build a set of all possible 4-element sequences."""
+    # return (_build_up(row_index, col_index),
+    #         _build_up_right(row_index, col_index),
+    #         _build_right(row_index, col_index),
+    #         _build_right_down(row_index, col_index),
+    #         _build_down(row_index, col_index),
+    #         _build_down_left(row_index, col_index),
+    #         _build_left(row_index, col_index),
+    #         _buil_left_up(row_index, col_index))
+    sequences = set()
+    for row in range(len(GRID)):
+        for col in range(len(GRID[row])):
+            sequences.add(_build_up(row, col))
+    return sequences
+
 def problem_11():
     """Find the largest product of four adjacent elements."""
-    pass
+    products = [reduce(operator.mul, sequence)
+                for sequence in _build_all_possible_sequences()]
+    return max(products)
 
 if __name__ == '__main__':
     print problem_11()
