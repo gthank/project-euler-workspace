@@ -28,9 +28,8 @@ def problem_12(min_divisors):
     """Finds the first triangular number to have more than 500 divisors."""
     for triangular in triangular_numbers():
         cur_factors = factors(triangular)
-        print cur_factors
         if len(cur_factors) > min_divisors:
             return triangular
 
 if __name__ == '__main__':
-    print problem_12(5)
+    print problem_12(500)
