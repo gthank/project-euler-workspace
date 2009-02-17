@@ -25,11 +25,12 @@ GRID = [
     [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
     [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ]
+INVALID_COORDS_TUPLE = 0,
 
 def _build_up(row_index, col_index):
     """Build the sequence going straight up from row_index."""
     if row_index < OFFSET:
-        return 0,
+        return INVALID_COORDS_TUPLE
 
     return (GRID[row_index][col_index],
             GRID[row_index - 1][col_index],
@@ -39,7 +40,7 @@ def _build_up(row_index, col_index):
 def _build_down(row_index, col_index):
     """Build the sequence going straight down from row_index."""
     if row_index + OFFSET >= len(GRID):
-        return 0,
+        return INVALID_COORDS_TUPLE
 
     return (GRID[row_index][col_index],
             GRID[row_index + 1][col_index],
@@ -49,7 +50,7 @@ def _build_down(row_index, col_index):
 def _build_left(row_index, col_index):
     """Build the sequence going straight left from col_index."""
     if col_index < OFFSET:
-        return 0,
+        return INVALID_COORDS_TUPLE
 
     return (GRID[row_index][col_index],
             GRID[row_index][col_index - 1],
