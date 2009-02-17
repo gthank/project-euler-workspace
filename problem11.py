@@ -67,6 +67,19 @@ def _build_right(row_index, col_index):
             GRID[row_index][col_index + 2],
             GRID[row_index][col_index + 3])
 
+def _build_up_right(row_index, col_index):
+    """Build the sequence going up and to the right from \
+    (row_index, col_index)."""
+    if col_index + OFFSET >= len(GRID[row_index]):
+        return INVALID_COORDS_TUPLE
+    if row_index < OFFSET:
+        return INVALID_COORDS_TUPLE
+
+    return (GRID[row_index][col_index],
+            GRID[row_index - 1][col_index + 1],
+            GRID[row_index - 2][col_index + 2],
+            GRID[row_index - 3][col_index + 3])
+
 def _build_all_possible_sequences():
     """Build a set of all possible 4-element sequences."""
     sequences = set()
@@ -76,6 +89,7 @@ def _build_all_possible_sequences():
             sequences.add(_build_down(row, col))
             sequences.add(_build_left(row, col))
             sequences.add(_build_right(row, col))
+            sequences.add(_build_up_right(row, col))
     return sequences
 
 def problem_11():
