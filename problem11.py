@@ -68,14 +68,6 @@ def _build_right(row_index, col_index):
 
 def _build_all_possible_sequences():
     """Build a set of all possible 4-element sequences."""
-    # return (_build_up(row_index, col_index),
-    #         _build_up_right(row_index, col_index),
-    #         _build_right(row_index, col_index),
-    #         _build_right_down(row_index, col_index),
-    #         _build_down(row_index, col_index),
-    #         _build_down_left(row_index, col_index),
-    #         _build_left(row_index, col_index),
-    #         _buil_left_up(row_index, col_index))
     sequences = set()
     for row in range(len(GRID)):
         for col in range(len(GRID[row])):
