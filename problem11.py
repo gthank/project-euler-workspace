@@ -70,9 +70,9 @@ def _build_right(row_index, col_index):
 def _build_up_right(row_index, col_index):
     """Build the sequence going up and to the right from \
     (row_index, col_index)."""
-    if col_index + OFFSET >= len(GRID[row_index]):
-        return INVALID_COORDS_TUPLE
     if row_index < OFFSET:
+        return INVALID_COORDS_TUPLE
+    if col_index + OFFSET >= len(GRID[row_index]):
         return INVALID_COORDS_TUPLE
 
     return (GRID[row_index][col_index],
