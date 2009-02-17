@@ -1,7 +1,5 @@
 """Solves Problem 11 from Project Euler."""
 
-import operator
-
 OFFSET = 3
 GRID = [
     [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
@@ -25,120 +23,118 @@ GRID = [
     [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
     [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ]
-INVALID_COORDS_TUPLE = 0,
+INVALID_COORDS_PRODUCT = 0
 
-def _build_up(row_index, col_index):
+def _calc_up(row_index, col_index):
     """Build the sequence going straight up from row_index."""
     if row_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index - 1][col_index],
-            GRID[row_index - 2][col_index],
-            GRID[row_index - 3][col_index])
+    return GRID[row_index][col_index] * \
+            GRID[row_index - 1][col_index] * \
+            GRID[row_index - 2][col_index] * \
+            GRID[row_index - 3][col_index]
 
-def _build_down(row_index, col_index):
+def _calc_down(row_index, col_index):
     """Build the sequence going straight down from row_index."""
     if row_index + OFFSET >= len(GRID):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index + 1][col_index],
-            GRID[row_index + 2][col_index],
-            GRID[row_index + 3][col_index])
+    return GRID[row_index][col_index] * \
+            GRID[row_index + 1][col_index] * \
+            GRID[row_index + 2][col_index] * \
+            GRID[row_index + 3][col_index]
 
-def _build_left(row_index, col_index):
+def _calc_left(row_index, col_index):
     """Build the sequence going straight left from col_index."""
     if col_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index][col_index - 1],
-            GRID[row_index][col_index - 2],
-            GRID[row_index][col_index - 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index][col_index - 1] * \
+            GRID[row_index][col_index - 2] * \
+            GRID[row_index][col_index - 3]
 
-def _build_right(row_index, col_index):
+def _calc_right(row_index, col_index):
     """Build the sequence going straight right from row_index."""
     if col_index + OFFSET >= len(GRID[row_index]):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index][col_index + 1],
-            GRID[row_index][col_index + 2],
-            GRID[row_index][col_index + 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index][col_index + 1] * \
+            GRID[row_index][col_index + 2] * \
+            GRID[row_index][col_index + 3]
 
-def _build_up_right(row_index, col_index):
+def _calc_up_right(row_index, col_index):
     """Build the sequence going up and to the right from \
     (row_index, col_index)."""
     if row_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
     if col_index + OFFSET >= len(GRID[row_index]):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index - 1][col_index + 1],
-            GRID[row_index - 2][col_index + 2],
-            GRID[row_index - 3][col_index + 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index - 1][col_index + 1] * \
+            GRID[row_index - 2][col_index + 2] * \
+            GRID[row_index - 3][col_index + 3]
 
-def _build_down_right(row_index, col_index):
+def _calc_down_right(row_index, col_index):
     """Build the sequence going down and to the right from \
     (row_index, col_index)."""
     if row_index + OFFSET >= len(GRID):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
     if col_index + OFFSET >= len(GRID[row_index]):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index + 1][col_index + 1],
-            GRID[row_index + 2][col_index + 2],
-            GRID[row_index + 3][col_index + 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index + 1][col_index + 1] * \
+            GRID[row_index + 2][col_index + 2] * \
+            GRID[row_index + 3][col_index + 3]
 
-def _build_down_left(row_index, col_index):
+def _calc_down_left(row_index, col_index):
     """Build the sequence going down and to the left from \
     (row_index, col_index)."""
     if row_index + OFFSET >= len(GRID):
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
     if col_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index + 1][col_index - 1],
-            GRID[row_index + 2][col_index - 2],
-            GRID[row_index + 3][col_index - 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index + 1][col_index - 1] * \
+            GRID[row_index + 2][col_index - 2] * \
+            GRID[row_index + 3][col_index - 3]
 
-def _build_up_left(row_index, col_index):
+def _calc_up_left(row_index, col_index):
     """Build the sequence going down and to the left from \
     (row_index, col_index)."""
     if row_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
     if col_index < OFFSET:
-        return INVALID_COORDS_TUPLE
+        return INVALID_COORDS_PRODUCT
 
-    return (GRID[row_index][col_index],
-            GRID[row_index - 1][col_index - 1],
-            GRID[row_index - 2][col_index - 2],
-            GRID[row_index - 3][col_index - 3])
+    return GRID[row_index][col_index] * \
+            GRID[row_index - 1][col_index - 1] * \
+            GRID[row_index - 2][col_index - 2] * \
+            GRID[row_index - 3][col_index - 3]
 
-def _build_all_possible_sequences():
+def _calc_all_possible_sequences():
     """Build a set of all possible 4-element sequences."""
-    sequences = set()
+    products = set()
     for row in range(len(GRID)):
         for col in range(len(GRID[row])):
-            sequences.add(_build_up(row, col))
-            sequences.add(_build_down(row, col))
-            sequences.add(_build_left(row, col))
-            sequences.add(_build_right(row, col))
-            sequences.add(_build_up_right(row, col))
-            sequences.add(_build_down_right(row, col))
-            sequences.add(_build_down_left(row, col))
-            sequences.add(_build_up_left(row, col))
-    return sequences
+            products.add(_calc_up(row, col))
+            products.add(_calc_down(row, col))
+            products.add(_calc_left(row, col))
+            products.add(_calc_right(row, col))
+            products.add(_calc_up_right(row, col))
+            products.add(_calc_down_right(row, col))
+            products.add(_calc_down_left(row, col))
+            products.add(_calc_up_left(row, col))
+    return products
 
 def problem_11():
     """Find the largest product of four adjacent elements."""
-    products = [reduce(operator.mul, sequence)
-                for sequence in _build_all_possible_sequences()]
-    return max(products)
+    return max(_calc_all_possible_sequences())
 
 if __name__ == '__main__':
     print problem_11()
