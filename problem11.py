@@ -36,7 +36,6 @@ def _build_up(row_index, col_index):
             GRID[row_index - 2][col_index],
             GRID[row_index - 3][col_index])
 
-
 def _build_all_possible_sequences():
     """Build a set of all possible 4-element sequences."""
     # return (_build_up(row_index, col_index),
