@@ -81,7 +81,7 @@ def _build_up_right(row_index, col_index):
             GRID[row_index - 3][col_index + 3])
 
 def _build_down_right(row_index, col_index):
-    """Build the sequence going up and to the right from \
+    """Build the sequence going down and to the right from \
     (row_index, col_index)."""
     if row_index + OFFSET >= len(GRID):
         return INVALID_COORDS_TUPLE
