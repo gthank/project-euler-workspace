@@ -1,8 +1,4 @@
-"""Solves Problem 14 from Project Euler.
-
->>> problem_14(13)
-10
-"""
+"""Solves Problem 14 from Project Euler."""
 
 def _gen_sequence(seed, cur_sequence = None):
     """Generates a sequence following the rules from Problem 14.
@@ -20,7 +16,11 @@ def _gen_sequence(seed, cur_sequence = None):
         return _gen_sequence(seed / 2, cur_sequence)
 
 def problem_14(upper_bound):
-    """Finds the seed (less than upper_bound) for the longest sequence."""
+    """Finds the seed (less than upper_bound) for the longest sequence.
+
+    >>> problem_14(13)
+    12
+    """
     cur_answer = 0, 0  # Track the length too, just out of curiosity.
     for seed in reversed(xrange(1, upper_bound)):
         cur_length = len(_gen_sequence(seed))
@@ -29,4 +29,5 @@ def problem_14(upper_bound):
     return cur_answer[0]
 
 if __name__ == '__main__':
-    print problem_14(13)
+    import doctest
+    doctest.testmod()
