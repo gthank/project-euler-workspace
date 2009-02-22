@@ -16,10 +16,10 @@ def _gen_sequence(seed, cur_sequence = None):
         return _gen_sequence(seed / 2, cur_sequence)
 
 def problem_14(upper_bound):
-    """Finds the seed (less than upper_bound) for the longest sequence.
+    """Finds the seed (< upper_bound and > 500000) for the longest sequence.
 
-    >>> problem_14(14)
-    9
+    >>> problem_14(502873)
+    502137
     """
     cur_answer = 0, 0  # Track the length too, just out of curiosity.
     for seed in reversed(xrange(500001, upper_bound, 2)):
