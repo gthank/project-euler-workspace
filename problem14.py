@@ -1,0 +1,32 @@
+"""Solves Problem 14 from Project Euler.
+
+>>> problem_14(13)
+10
+"""
+
+def _gen_sequence(seed, cur_sequence = None):
+    """Generates a sequence following the rules from Problem 14.
+    
+    >>> _gen_sequence(13)
+    [13, 40, 20, 10, 5, 16, 8, 4, 2, 1]"""
+    if not cur_sequence:
+        cur_sequence = []
+    cur_sequence.append(seed)
+    if seed == 1:
+        return cur_sequence
+    elif seed % 2:
+        return _gen_sequence(3 * seed + 1, cur_sequence)
+    else:
+        return _gen_sequence(seed / 2, cur_sequence)
+
+def problem_14(upper_bound):
+    """Finds the seed (less than upper_bound) for the longest sequence."""
+    cur_answer = 0, 0  # Track the length too, just out of curiosity.
+    for seed in reversed(xrange(1, upper_bound)):
+        cur_length = len(_gen_sequence(seed))
+        if cur_length > cur_answer[1]:
+            cur_answer = seed, cur_answer
+    return cur_answer[0]
+
+if __name__ == '__main__':
+    print problem_14(13)
