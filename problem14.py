@@ -29,5 +29,4 @@ def problem_14(upper_bound):
     return cur_answer[0]
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+    print problem_14(1000000)
