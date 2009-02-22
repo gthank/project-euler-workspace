@@ -18,8 +18,8 @@ def _gen_sequence(seed, cur_sequence = None):
 def problem_14(upper_bound):
     """Finds the seed (less than upper_bound) for the longest sequence.
 
-    >>> problem_14(13)
-    12
+    >>> problem_14(14)
+    9
     """
     cur_answer = 0, 0  # Track the length too, just out of curiosity.
     for seed in reversed(xrange(1, upper_bound)):
@@ -31,4 +31,3 @@ def problem_14(upper_bound):
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
-    print problem_14(1000000)
