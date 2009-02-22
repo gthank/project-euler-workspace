@@ -22,7 +22,7 @@ def problem_14(upper_bound):
     9
     """
     cur_answer = 0, 0  # Track the length too, just out of curiosity.
-    for seed in reversed(xrange(1, upper_bound)):
+    for seed in reversed(xrange(500001, upper_bound, 2)):
         cur_length = len(_gen_sequence(seed))
         if cur_length > cur_answer[1]:
             cur_answer = seed, cur_length
