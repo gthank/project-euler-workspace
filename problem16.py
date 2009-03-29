@@ -32,7 +32,7 @@ def string_based_sum_of_digits(num):
 
 def problem_16():
     """Solves Problem 16 at Project Euler."""
-    return pure_numeric_sum_of_digits(2 ** 1000)
+    return string_based_sum_of_digits(2 ** 1000)
 
 if __name__ == '__main__':
     print problem_16()
