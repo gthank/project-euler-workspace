@@ -1,5 +1,4 @@
 import math
-import operator
 
 def pure_numeric_sum_of_digits(num):
     """
@@ -27,12 +26,12 @@ def string_based_sum_of_digits(num):
     >>> string_based_sum_of_digits(2 ** 15)
     26
     """
-    digits = [int(digit) for digit in str(num)]
-    return reduce(operator.add, digits, 0)    
+    sum([int(digit) for digit in str(num)])
 
 def problem_16():
     """Solves Problem 16 at Project Euler."""
     return string_based_sum_of_digits(2 ** 1000)
 
 if __name__ == '__main__':
-    print problem_16()
+    for n in xrange(10000):
+        string_based_sum_of_digits(2 ** 1000)
