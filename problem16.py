@@ -1,5 +1,4 @@
 import math
-import operator
 
 def pure_numeric_sum_of_digits(num):
     """
