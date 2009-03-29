@@ -1,4 +1,5 @@
 import math
+import operator
 
 def pure_numeric_sum_of_digits(num):
     """
@@ -33,5 +34,4 @@ def problem_16():
     return string_based_sum_of_digits(2 ** 1000)
 
 if __name__ == '__main__':
-    for n in xrange(10000):
-        string_based_sum_of_digits(2 ** 1000)
+    print problem_16()
