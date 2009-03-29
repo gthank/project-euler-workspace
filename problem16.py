@@ -8,7 +8,7 @@ def sum_of_digits(num):
     26
     """
     running_total = 0
-    for n in xrange(math.log10(num) + 1):
+    for n in xrange(int(math.log10(num) + 1)):
         running_total += num % 10
         num //= 10
     return running_total
