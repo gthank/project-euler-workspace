@@ -68,8 +68,8 @@ def _count_characters_we_care_about(string_to_count):
     """
     Count the characters in ``string_to_count``, excluding things like hyphens and spaces.
     
-    >>> _count_characters_we_care_about("one hundred and fifteen")
-    20
+    >>> _count_characters_we_care_about("one hundred and twenty-three")
+    24
     """
     return len(_CHARACTERS_WE_CARE_ABOUT.findall(string_to_count))
 
