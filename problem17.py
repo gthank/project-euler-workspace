@@ -92,8 +92,8 @@ def problem_17(upper_bound = 1000):
     >>> problem_17(2)
     6
     """
-    converted_nums = [_words_from_num(num) for num in xrange(1, upper_bound + 1)]
-    lengths = [_count_characters_we_care_about(phrase) for phrase in converted_nums]
+    converted_nums = (_words_from_num(num) for num in xrange(1, upper_bound + 1))
+    lengths = (_count_characters_we_care_about(phrase) for phrase in converted_nums)
     return sum(lengths)
 
 if __name__ == '__main__':
