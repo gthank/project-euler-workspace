@@ -1,6 +1,6 @@
 import re
 
-NUMBER_NAMES = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+_NUMBER_NAMES = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
                 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
                 11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
                 15: "fifteen", 16: "sixteen", 17: "seventeen",
@@ -33,7 +33,7 @@ NUMBER_NAMES = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
                 96: "ninety-six", 97: "ninety-seven", 98: "ninety-eight",
                 99: "ninety-nine"}
 
-CHARACTERS_WE_CARE_ABOUT = re.compile("\w")
+_CHARACTERS_WE_CARE_ABOUT = re.compile("\w")
 
 def _words_from_num(num):
     """
@@ -49,18 +49,18 @@ def _words_from_num(num):
     parts_list = []
     if num >= 1000:
         thousands = num // 1000
-        parts_list.append(NUMBER_NAMES[thousands])
+        parts_list.append(_NUMBER_NAMES[thousands])
         parts_list.append(" thousand")
         num -= thousands * 1000
     if num >= 100:
         hundreds = num // 100
-        parts_list.append(NUMBER_NAMES[hundreds])
+        parts_list.append(_NUMBER_NAMES[hundreds])
         parts_list.append(" hundred")
         num -= hundreds * 100
     if num:
         if parts_list:
             parts_list.append(" and")
-        parts_list.extend([" ", NUMBER_NAMES[num]])
+        parts_list.extend([" ", _NUMBER_NAMES[num]])
 
     return "".join(parts_list)
 
@@ -71,7 +71,7 @@ def _count_characters_we_care_about(string_to_count):
     >>> _count_characters_we_care_about("one hundred and fifteen")
     20
     """
-    return len(CHARACTERS_WE_CARE_ABOUT.findall(string_to_count))
+    return len(_CHARACTERS_WE_CARE_ABOUT.findall(string_to_count))
 
 def problem_17(upper_bound = 1001):
     """
@@ -83,7 +83,7 @@ def problem_17(upper_bound = 1001):
     >>> problem_17(2)
     'six'
     """
-    converted_nums = [_words_from_num(num) for num in xrange(1, upper_bound)]
+    converted_nums = [_words_from_num(num) for num in xrange(1, upper_bound + 1)]
     lengths = [_count_characters_we_care_about(phrase) for phrase in converted_nums]
     return sum(lengths)
 
