@@ -1,3 +1,12 @@
+# problem17.py
+"""
+Find the solution to `Problem 17`_ at `Project Euler`_.
+
+.. _Problem 17: http://projecteuler.net/index.php?section=problems&id=17
+.. _Project Euler: http://projecteuler.net/
+"""
+__docformat__ = "restructuredtext en"
+
 import re
 
 _NUMBER_NAMES = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
