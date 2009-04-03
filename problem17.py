@@ -73,7 +73,7 @@ def _count_characters_we_care_about(string_to_count):
     """
     return len(_CHARACTERS_WE_CARE_ABOUT.findall(string_to_count))
 
-def problem_17(upper_bound = 1001):
+def problem_17(upper_bound = 1000):
     """
     Find the solution to `Problem 17`_ at `Project Euler`_.
     
