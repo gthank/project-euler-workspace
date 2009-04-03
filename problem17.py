@@ -81,7 +81,7 @@ def problem_17(upper_bound = 1001):
     .. _Project Euler: http://projecteuler.net/
     
     >>> problem_17(2)
-    'six'
+    6
     """
     converted_nums = [_words_from_num(num) for num in xrange(1, upper_bound + 1)]
     lengths = [_count_characters_we_care_about(phrase) for phrase in converted_nums]
