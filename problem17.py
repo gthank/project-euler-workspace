@@ -88,4 +88,4 @@ def problem_17(upper_bound = 1001):
     return sum(lengths)
 
 if __name__ == '__main__':
-    problem_17()
+    print problem_17()
