@@ -82,7 +82,7 @@ def _count_characters_we_care_about(string_to_count):
     """
     return len(_CHARACTERS_WE_CARE_ABOUT.findall(string_to_count))
 
-def problem_17(upper_bound = 1000):
+def problem_17(upper_bound = 1001):
     """
     Find the solution to `Problem 17`_ at `Project Euler`_.
     
@@ -92,7 +92,7 @@ def problem_17(upper_bound = 1000):
     >>> problem_17(2)
     6
     """
-    converted_nums = (_words_from_num(num) for num in xrange(1, upper_bound + 1))
+    converted_nums = (_words_from_num(num) for num in xrange(1, upper_bound))
     lengths = (_count_characters_we_care_about(phrase) for phrase in converted_nums)
     return sum(lengths)
 
