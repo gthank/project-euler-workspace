@@ -49,6 +49,7 @@ def _words_from_num(num):
     Convert ``num`` to its (British) English phrase equivalent.
     
     If ``num`` is greater than 9,999 then raise an ``Exception``.
+    
     >>> _words_from_num(115)
     'one hundred and fifteen'
     """
