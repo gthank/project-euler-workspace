@@ -29,7 +29,8 @@ def main():
     sums = {}
     for x in xrange(10000):
         sums[x] = sum(factorize(x))
-    amicable_numbers = [sum_of_factors for sum_of_factors in sums.values() if sum_of_factors in sums]
+    # If sums[x] == index and sums[index] == x
+    amicable_numbers = [k for k, v in enumerate(sums) if v in sums and sums[v] == k]
     return sum(amicable_numbers)
 
 
