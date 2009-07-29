@@ -1,4 +1,4 @@
-"""Solves Problem 11 from Project Euler."""
+"""Solve Problem 11 from Project Euler."""
 import itertools
 import operator
 
