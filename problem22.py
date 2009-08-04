@@ -20,7 +20,7 @@ def _massage_names(name_string):
     return sorted([name.strip('"') for name in name_string.split(',')])
 
 
-def load_names(name_file):
+def _load_names(name_file):
     """Loads the names from ``name_file``, strips the double quotes, \
     and returns a sorted version of that sequence before returning it."""
     names = None
@@ -30,12 +30,12 @@ def load_names(name_file):
     return names
 
 
-def alpha_value(chars):
+def _alpha_value(chars):
     """Calculate the alphabetical value (as described by `Problem 22`_).
 
     .. _Problem 22: http://projecteuler.net/index.php?section=problems&id=22
 
-    >>> alpha_value('COLIN')
+    >>> _alpha_value('COLIN')
     53
     """
     return sum((1 + ascii_uppercase.index(char) for char in chars))
@@ -47,8 +47,8 @@ def problem_22():
 
     .. _Problem 22: http://projecteuler.net/index.php?section=problems&id=22
     """
-    names = load_names('names.txt')
-    return sum((i * alpha_value(name) for i, name in enumerate(names)))
+    names = _load_names('names.txt')
+    return sum((i * _alpha_value(name) for i, name in enumerate(names)))
 
 
 if __name__ == '__main__':
