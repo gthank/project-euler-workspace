@@ -1,6 +1,16 @@
+"""
+Solve `Problem 23`_.
+
+.. _Problem 23: http://projecteuler.net/index.php?section=problems&id=23
+"""
+
+
+from math import sqrt
+
+
 def _factorize(to_factor):
     """
-    Use trial division to _factorize ``to_factor``; return a list of the factors.
+    Use trial division to factorize ``to_factor``; return a list of the factors.
 
     >>> _factorize(220)
     [1, 2, 4, 5, 10, 11, 20, 22, 44, 55, 110]
@@ -9,7 +19,8 @@ def _factorize(to_factor):
     """
     factors = [1]
     divisor = 2
-    while (divisor < int(to_factor)):
+    last_number = int(sqrt(to_factor))
+    while (divisor <= last_number):
         if not to_factor % divisor:
             factors.extend((divisor, to_factor / divisor))
         divisor += 1
