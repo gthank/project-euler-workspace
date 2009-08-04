@@ -25,12 +25,12 @@ def main():
 
     .. _`Problem 21`: http://projecteuler.net/index.php?section=problems&id=21
     """
-    amicable_numbers = []
-    sums = {}
+    amicable_numbers = set()
     for x in xrange(10000):
-        sums[x] = sum(factorize(x))
-    # If sums[x] == index and sums[index] == x
-    amicable_numbers = [k for k, v in enumerate(sums) if v in sums and sums[v] == k]
+        y = sum(factorize(x))
+        if x != y and x == sum(factorize(y)):
+            amicable_numbers.add(x)
+            amicable_numbers.add(y)
     return sum(amicable_numbers)
 
 
