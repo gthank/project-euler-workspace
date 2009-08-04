@@ -37,8 +37,21 @@ def _alpha_value(chars):
 
     >>> _alpha_value('COLIN')
     53
+    >>> _alpha_value('RUTH')
+    67
     """
     return sum((1 + ascii_uppercase.index(char) for char in chars))
+
+
+def _score_name_list(name_list):
+    """
+    For each name in the list, calculate its alphabetical value and \
+    multiply by its position in the list.
+
+    >>> _score_name_list(['COLIN', 'RUTH'])
+    [53, 134]
+    """
+    return ((i + 1) * _alpha_value(name) for i, name in enumerate(name_list))
 
 
 def problem_22():
@@ -48,7 +61,7 @@ def problem_22():
     .. _Problem 22: http://projecteuler.net/index.php?section=problems&id=22
     """
     names = _load_names('names.txt')
-    return sum((i * _alpha_value(name) for i, name in enumerate(names)))
+    return sum(_score_name_list(names))
 
 
 if __name__ == '__main__':
