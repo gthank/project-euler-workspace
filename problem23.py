@@ -6,6 +6,7 @@ Solve `Problem 23`_.
 
 
 from math import sqrt
+import itertools
 
 
 def _factorize(to_factor):
@@ -49,28 +50,22 @@ def is_abundant(number):
     return _sum_of_factors(number) > number
 
 
-def is_sum_of_two_abundants(number):
-    """Determines whether ``number`` can be calculated by adding two \
-    abundant numbers."""
-    # FIXME Precalculate the sums so it's not doing the same work over and over.
-    for abundant in ABUNDANTS:
-        if (number - abundant) in ABUNDANTS:
-            return True
-    return False
-
-
 def problem_23():
     """
     Solve `Problem 23`_.
 
     .. _Problem 23: http://projecteuler.net/index.php?section=problems&id=23
     """
-    return sum((number for number in xrange(1, 28124)
-                if not is_sum_of_two_abundants(number)))
+    # upper_limit = 28124
+    upper_limit = 25
+    abundant_numbers = [number for number in xrange(1, upper_limit)
+                        if is_abundant(number)]
+    combos = itertools.combinations(abundant_numbers, 2)
+    reflexive_combos = ((number, number) for number in abundant_numbers)
+    sums = [sum(combo) for combo in itertools.chain(combos, reflexive_combos)]
+    non_sums = [number for number in xrange(1, upper_limit) if not number in sums]
+    return sum(non_sums)
 
-
-# The upper limit and lower limits come from the problem definition.
-ABUNDANTS = [number for number in xrange(12, 28123) if is_abundant(number)]
 
 if __name__ == '__main__':
     print problem_23()
