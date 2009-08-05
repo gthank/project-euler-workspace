@@ -56,8 +56,8 @@ def problem_23():
 
     .. _Problem 23: http://projecteuler.net/index.php?section=problems&id=23
     """
-    # upper_limit = 28124
-    upper_limit = 25
+    upper_limit = 28124
+    # upper_limit = 25
     abundant_numbers = [number for number in xrange(1, upper_limit)
                         if is_abundant(number)]
     combos = itertools.combinations(abundant_numbers, 2)
