@@ -62,8 +62,8 @@ def problem_23():
                         if is_abundant(number)]
     combos = itertools.combinations(abundant_numbers, 2)
     reflexive_combos = ((number, number) for number in abundant_numbers)
-    sums = [sum(combo) for combo in itertools.chain(combos, reflexive_combos)]
-    non_sums = [number for number in xrange(1, upper_limit) if not number in sums]
+    sums = set((sum(combo) for combo in itertools.chain(combos, reflexive_combos)))
+    non_sums = (number for number in xrange(1, upper_limit) if not number in sums)
     return sum(non_sums)
 
 
