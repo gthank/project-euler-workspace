@@ -19,9 +19,10 @@ def problem_twenty_five(num_of_digits):
     Find the first term in the Fibonacci sequence to contain ``num_of_digits`` digits.
 
     >>> problem_twenty_five(3)
-    144
+    12
     """
-    return itertools.dropwhile(lambda x: len(str(x)) < num_of_digits , fib()).next()
+    enumerated_fibs = enumerate(fib())
+    return itertools.dropwhile(lambda x: len(str(x[1])) < num_of_digits , enumerated_fibs).next()[0]
 
 
 if (__name__ == "__main__"):
