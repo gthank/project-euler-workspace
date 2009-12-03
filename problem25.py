@@ -14,12 +14,15 @@ def fib():
         a, b = b, a+b
 
 
-def problem_twenty_six():
-    """Find the first term in the Fibonacci sequence to contain 1000 digits."""
-    fibs = fib()
-    big_num = 10**999
-    return itertools.dropwhile(lambda x: len(str(x)) < big_num, fibs).next()
+def problem_twenty_five(num_of_digits):
+    """
+    Find the first term in the Fibonacci sequence to contain ``num_of_digits`` digits.
+
+    >>> problem_twenty_five(3)
+    144
+    """
+    return itertools.dropwhile(lambda x: len(str(x)) < num_of_digits , fib()).next()
 
 
 if (__name__ == "__main__"):
-    print problem_twenty_six()
+    print problem_twenty_five(1000)
